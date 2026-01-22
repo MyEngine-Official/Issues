@@ -9,7 +9,7 @@ public class NotificationService
         foreach (var notification in task.GetNotifications())
         {
             var scheduled = notification.GetScheduledTime(task.DueDateTime);
-            if (scheduled <= DateTime.Now)
+            if (scheduled <= DateTimeOffset.Now.LocalDateTime)
             {
                 continue;
             }
