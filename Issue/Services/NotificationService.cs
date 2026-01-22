@@ -38,7 +38,8 @@ public class NotificationService
         unchecked
         {
             var hash = task.Id.GetHashCode();
-            return (hash * 397) ^ index;
+            var id = (hash * 397) ^ index;
+            return Math.Abs(id == int.MinValue ? int.MaxValue : id);
         }
     }
 }

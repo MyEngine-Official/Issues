@@ -11,6 +11,8 @@ public class TaskItem
     public NotificationOffset? SecondaryNotification { get; set; }
     public NotificationOffset? TertiaryNotification { get; set; }
 
+    public string AlarmLabel => AlarmEnabled ? "Alarma: Sí" : "Alarma: No";
+
     public IEnumerable<NotificationOffset> GetNotifications()
     {
         yield return PrimaryNotification;

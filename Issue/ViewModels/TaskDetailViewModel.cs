@@ -169,6 +169,12 @@ public class TaskDetailViewModel : ViewModelBase
     {
         if (string.IsNullOrWhiteSpace(Title))
         {
+            var page = Microsoft.Maui.Controls.Application.Current?.MainPage;
+            if (page is not null)
+            {
+                await page.DisplayAlert("Falta título", "Agrega un título para guardar la tarea.", "OK");
+            }
+
             return;
         }
 

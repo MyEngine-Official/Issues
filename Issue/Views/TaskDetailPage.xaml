@@ -28,7 +28,7 @@
             <HorizontalStackLayout Spacing="12" IsVisible="{Binding SecondaryEnabled}">
                 <Stepper Minimum="1" Maximum="999" Value="{Binding SecondaryValue}" />
                 <Label Text="{Binding SecondaryValue}" VerticalOptions="Center" />
-                <Picker ItemsSource="{Binding Units}" SelectedIndex="{Binding SecondaryUnitIndex}" />
+                <Picker ItemsSource="{Binding Units}" SelectedIndex="{Binding SecondaryUnitIndex}" Title="Unidad de tiempo secundaria" />
             </HorizontalStackLayout>
 
             <HorizontalStackLayout Spacing="12">
@@ -38,7 +38,7 @@
             <HorizontalStackLayout Spacing="12" IsVisible="{Binding TertiaryEnabled}">
                 <Stepper Minimum="1" Maximum="999" Value="{Binding TertiaryValue}" />
                 <Label Text="{Binding TertiaryValue}" VerticalOptions="Center" />
-                <Picker ItemsSource="{Binding Units}" SelectedIndex="{Binding TertiaryUnitIndex}" />
+                <Picker ItemsSource="{Binding Units}" SelectedIndex="{Binding TertiaryUnitIndex}" Title="Unidad de tiempo terciaria" />
             </HorizontalStackLayout>
 
             <Label Text="Alarma" FontAttributes="Bold" />

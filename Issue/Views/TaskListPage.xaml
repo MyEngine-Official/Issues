@@ -19,7 +19,7 @@
                             <Label Text="{Binding Description}" Style="{StaticResource SecondaryTextStyle}" />
                             <HorizontalStackLayout Spacing="12">
                                 <Label Text="{Binding DueDateTime, StringFormat='{}{0:dd MMM yyyy HH:mm}'}" />
-                                <Label Text="{Binding AlarmEnabled, StringFormat='Alarma: {0}'}" />
+                                <Label Text="{Binding AlarmLabel}" />
                             </HorizontalStackLayout>
                             <HorizontalStackLayout Spacing="12">
                                 <Button Text="Editar" CommandParameter="{Binding .}" Clicked="OnEditClicked" />
