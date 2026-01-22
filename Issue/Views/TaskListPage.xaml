@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Issue.Views.TaskListPage"
+             Title="Issue">
+
+    <Grid RowDefinitions="Auto,*" Padding="20">
+        <HorizontalStackLayout Spacing="12" Grid.Row="0">
+            <Label Text="Mis tareas" Style="{StaticResource PrimaryTitleStyle}" />
+            <Button Text="Nueva" Command="{Binding AddTaskCommand}" />
+        </HorizontalStackLayout>
+
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Tasks}" SelectionMode="None">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="0,8" Padding="16" BackgroundColor="{AppThemeBinding Light=#FFFFFF, Dark=#1E1E1E}">
+                        <VerticalStackLayout Spacing="6">
+                            <Label Text="{Binding Title}" FontSize="18" FontAttributes="Bold" />
+                            <Label Text="{Binding Description}" Style="{StaticResource SecondaryTextStyle}" />
+                            <HorizontalStackLayout Spacing="12">
+                                <Label Text="{Binding DueDateTime, StringFormat='{}{0:dd MMM yyyy HH:mm}'}" />
+                                <Label Text="{Binding AlarmLabel}" />
+                            </HorizontalStackLayout>
+                            <HorizontalStackLayout Spacing="12">
+                                <Button Text="Editar" CommandParameter="{Binding .}" Clicked="OnEditClicked" />
+                                <Button Text="Eliminar"
+                                        Command="{Binding BindingContext.DeleteTaskCommand, Source={RelativeSource AncestorType={x:Type ContentPage}}}"
+                                        CommandParameter="{Binding .}" />
+                            </HorizontalStackLayout>
+                        </VerticalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+    </Grid>
+</ContentPage>
