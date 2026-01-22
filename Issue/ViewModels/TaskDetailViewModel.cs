@@ -19,8 +19,10 @@ public class TaskDetailViewModel : ViewModelBase
     private bool _alarmEnabled;
     private bool _secondaryEnabled;
     private bool _tertiaryEnabled;
-    private int _secondaryValue = 10;
-    private int _tertiaryValue = 1;
+    private const int DefaultSecondaryValue = 10;
+    private const int DefaultTertiaryValue = 1;
+    private int _secondaryValue = DefaultSecondaryValue;
+    private int _tertiaryValue = DefaultTertiaryValue;
     private int _secondaryUnitIndex;
     private int _tertiaryUnitIndex = 1;
 
@@ -98,13 +100,13 @@ public class TaskDetailViewModel : ViewModelBase
     public int SecondaryValue
     {
         get => _secondaryValue;
-        set => SetProperty(ref _secondaryValue, value);
+        set => SetProperty(ref _secondaryValue, Math.Max(1, value));
     }
 
     public int TertiaryValue
     {
         get => _tertiaryValue;
-        set => SetProperty(ref _tertiaryValue, value);
+        set => SetProperty(ref _tertiaryValue, Math.Max(1, value));
     }
 
     public int SecondaryUnitIndex
@@ -138,8 +140,8 @@ public class TaskDetailViewModel : ViewModelBase
         _alarmEnabled = task.AlarmEnabled;
         _secondaryEnabled = false;
         _tertiaryEnabled = false;
-        _secondaryValue = 10;
-        _tertiaryValue = 1;
+        _secondaryValue = DefaultSecondaryValue;
+        _tertiaryValue = DefaultTertiaryValue;
         _secondaryUnitIndex = 0;
         _tertiaryUnitIndex = 1;
 

@@ -1,5 +1,3 @@
-using Issue.Services;
-
 namespace Issue.Services;
 
 public class AndroidNotificationManager : INotificationManager

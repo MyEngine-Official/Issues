@@ -26,7 +26,8 @@
                 <Label Text="Notificación secundaria" VerticalOptions="Center" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="12" IsVisible="{Binding SecondaryEnabled}">
-                <Entry Text="{Binding SecondaryValue}" Keyboard="Numeric" WidthRequest="80" />
+                <Stepper Minimum="1" Maximum="999" Value="{Binding SecondaryValue}" />
+                <Label Text="{Binding SecondaryValue}" VerticalOptions="Center" />
                 <Picker ItemsSource="{Binding Units}" SelectedIndex="{Binding SecondaryUnitIndex}" />
             </HorizontalStackLayout>
 
@@ -35,7 +36,8 @@
                 <Label Text="Notificación terciaria" VerticalOptions="Center" />
             </HorizontalStackLayout>
             <HorizontalStackLayout Spacing="12" IsVisible="{Binding TertiaryEnabled}">
-                <Entry Text="{Binding TertiaryValue}" Keyboard="Numeric" WidthRequest="80" />
+                <Stepper Minimum="1" Maximum="999" Value="{Binding TertiaryValue}" />
+                <Label Text="{Binding TertiaryValue}" VerticalOptions="Center" />
                 <Picker ItemsSource="{Binding Units}" SelectedIndex="{Binding TertiaryUnitIndex}" />
             </HorizontalStackLayout>
 

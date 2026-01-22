@@ -14,13 +14,19 @@ public class TaskService
         var stored = Preferences.Default.Get(TasksKey, string.Empty);
         if (!string.IsNullOrWhiteSpace(stored))
         {
-            var tasks = JsonSerializer.Deserialize<List<TaskItem>>(stored);
-            if (tasks is not null)
+            try
             {
-                foreach (var task in tasks)
+                var tasks = JsonSerializer.Deserialize<List<TaskItem>>(stored);
+                if (tasks is not null)
                 {
-                    _tasks.Add(task);
+                    foreach (var task in tasks)
+                    {
+                        _tasks.Add(task);
+                    }
                 }
+            }
+            catch (JsonException)
+            {
             }
         }
 

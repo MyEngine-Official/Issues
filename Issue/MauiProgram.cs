@@ -1,6 +1,4 @@
-﻿namespace Issue;
-
-using Issue.Services;
+﻿using Issue.Services;
 using Issue.ViewModels;
 using Issue.Views;
 #if ANDROID
