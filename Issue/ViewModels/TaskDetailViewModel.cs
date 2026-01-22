@@ -159,17 +159,10 @@ public class TaskDetailViewModel : ViewModelBase
             _tertiaryUnitIndex = unitIndex;
         }
 
-        OnPropertyChanged(nameof(Title));
-        OnPropertyChanged(nameof(Description));
-        OnPropertyChanged(nameof(Date));
-        OnPropertyChanged(nameof(Time));
-        OnPropertyChanged(nameof(AlarmEnabled));
-        OnPropertyChanged(nameof(SecondaryEnabled));
-        OnPropertyChanged(nameof(TertiaryEnabled));
-        OnPropertyChanged(nameof(SecondaryValue));
-        OnPropertyChanged(nameof(TertiaryValue));
-        OnPropertyChanged(nameof(SecondaryUnitIndex));
-        OnPropertyChanged(nameof(TertiaryUnitIndex));
+        OnPropertiesChanged(nameof(Title), nameof(Description), nameof(Date), nameof(Time),
+            nameof(AlarmEnabled), nameof(SecondaryEnabled), nameof(TertiaryEnabled),
+            nameof(SecondaryValue), nameof(TertiaryValue), nameof(SecondaryUnitIndex),
+            nameof(TertiaryUnitIndex));
     }
 
     private async void OnSave()

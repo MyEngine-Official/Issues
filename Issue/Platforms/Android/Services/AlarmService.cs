@@ -14,7 +14,7 @@ public class AlarmService : IAlarmService
         intent.PutExtra(AlarmReceiver.MessageKey, message);
         intent.PutExtra(AlarmReceiver.WithAlarmKey, withAlarm);
 
-        var requestCode = Math.Abs(scheduledTime.GetHashCode());
+        var requestCode = Math.Abs(Guid.NewGuid().GetHashCode());
         var pendingIntent = PendingIntent.GetBroadcast(context, requestCode, intent, PendingIntentFlags.UpdateCurrent | PendingIntentFlags.Immutable);
         var triggerAtMillis = new DateTimeOffset(scheduledTime).ToUnixTimeMilliseconds();
 

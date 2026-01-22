@@ -24,4 +24,12 @@ public abstract class ViewModelBase : INotifyPropertyChanged
     {
         PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
     }
+
+    protected void OnPropertiesChanged(params string[] propertyNames)
+    {
+        foreach (var name in propertyNames)
+        {
+            OnPropertyChanged(name);
+        }
+    }
 }

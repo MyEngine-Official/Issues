@@ -27,6 +27,7 @@ public class TaskService
             }
             catch (JsonException)
             {
+                Preferences.Default.Remove(TasksKey);
             }
         }
 
