@@ -6,7 +6,7 @@ namespace Issue.Platforms.Android.Services;
 
 public class AlarmService : IAlarmService
 {
-    public void ScheduleAlarm(DateTime scheduledTime, string title, string message, bool withAlarm)
+    public void ScheduleAlarm(int requestCode, DateTime scheduledTime, string title, string message, bool withAlarm)
     {
         var context = Application.Context;
         var intent = new Intent(context, typeof(AlarmReceiver));
@@ -14,7 +14,6 @@ public class AlarmService : IAlarmService
         intent.PutExtra(AlarmReceiver.MessageKey, message);
         intent.PutExtra(AlarmReceiver.WithAlarmKey, withAlarm);
 
-        var requestCode = Math.Abs(Guid.NewGuid().GetHashCode());
         var pendingIntent = PendingIntent.GetBroadcast(context, requestCode, intent, PendingIntentFlags.UpdateCurrent | PendingIntentFlags.Immutable);
         var triggerAtMillis = new DateTimeOffset(scheduledTime).ToUnixTimeMilliseconds();
 

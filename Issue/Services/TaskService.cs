@@ -76,7 +76,13 @@ public class TaskService
 
     public void DeleteTask(TaskItem task)
     {
-        _tasks.Remove(task);
+        var existing = _tasks.FirstOrDefault(t => t.Id == task.Id);
+        if (existing is null)
+        {
+            return;
+        }
+
+        _tasks.Remove(existing);
         SaveTasks();
     }
 

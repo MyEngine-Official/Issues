@@ -198,9 +198,10 @@ public class TaskDetailViewModel : ViewModelBase
             _taskService.AddTask(Task);
         }
 
+        CancelNotifications();
         foreach (var notification in _notificationService.BuildNotifications(Task))
         {
-            _notificationManager.ScheduleNotification(notification.scheduleTime, notification.title, notification.body, notification.withAlarm);
+            _notificationManager.ScheduleNotification(notification.notificationId, notification.scheduleTime, notification.title, notification.body, notification.withAlarm);
         }
 
         await _navigationService.GoBackAsync();
@@ -208,8 +209,17 @@ public class TaskDetailViewModel : ViewModelBase
 
     private async void OnDelete()
     {
+        CancelNotifications();
         _taskService.DeleteTask(Task);
         await _navigationService.GoBackAsync();
+    }
+
+    private void CancelNotifications()
+    {
+        foreach (var notificationId in _notificationService.BuildNotificationIds(Task))
+        {
+            _notificationManager.CancelNotification(notificationId);
+        }
     }
 
     private static TimeSpan BuildOffset(int value, int unitIndex)

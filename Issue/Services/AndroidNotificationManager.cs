@@ -9,8 +9,13 @@ public class AndroidNotificationManager : INotificationManager
         _alarmService = alarmService;
     }
 
-    public void ScheduleNotification(DateTime scheduledTime, string title, string message, bool withAlarm)
+    public void ScheduleNotification(int notificationId, DateTime scheduledTime, string title, string message, bool withAlarm)
     {
-        _alarmService.ScheduleAlarm(scheduledTime, title, message, withAlarm);
+        _alarmService.ScheduleAlarm(notificationId, scheduledTime, title, message, withAlarm);
+    }
+
+    public void CancelNotification(int notificationId)
+    {
+        _alarmService.CancelAlarm(notificationId);
     }
 }
